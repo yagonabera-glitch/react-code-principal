@@ -1,17 +1,20 @@
 import './produtos.css'
-import banne_1 from "../../assets/imgs/banner.png";
-import banne_2 from "../../assets/imgs/banner2.png";
-import banne_3 from "../../assets/imgs/banner3.png";
-import bolo_belga from "../../assets/imgs/choc-belga.png";
-import bolo_ninho from "../../assets/imgs/choc-ninho.png";
-import cenoura from "../../assets/imgs/cenoura-choc.png";
-import bolo_morango from "../../assets/imgs/choc-ninho-morango.png";
-import bolo_pistache from "../../assets/imgs/choc-pistache.png";
-import bolo_oreo from "../../assets/imgs/choc-oreo.png";
+
+// import bolo_belga from "../../assets/imgs/choc-belga.png";
+// import bolo_ninho from "../../assets/imgs/choc-ninho.png";
+// import cenoura from "../../assets/imgs/cenoura-choc.png";
+// import bolo_morango from "../../assets/imgs/choc-ninho-morango.png";
+// import bolo_pistache from "../../assets/imgs/choc-pistache.png";
+// import bolo_oreo from "../../assets/imgs/choc-oreo.png";
 import whatsapp from "../../assets/whatsapp.png";
 import { useEffect, useState } from 'react';
 import { getBolos } from '../../services/boloService';
 import type { Bolo } from '../../types/Bolo';
+// import bolo_default from '../../assets/imgs/bolo-default.png'
+import CardProduto from '../../components/CardProduto/CardProduto';
+import Carrossel from '../../components/Carrossel/Carrossel';
+
+
 
 
 export default function Produtos() {
@@ -39,29 +42,7 @@ export default function Produtos() {
         <>
             <main>
 
-                <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <img src={banne_1} className="d-block w-100" alt="..." />
-                        </div>
-                        <div className="carousel-item">
-                            <img src={banne_2} className="d-block w-100" alt="..." />
-                        </div>
-                        <div className="carousel-item">
-                            <img src={banne_3} className="d-block w-100" alt="..." />
-                        </div>
-                    </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                        data-bs-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span className="visually-hidden">Previous</span>
-                    </button>
-                    <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                        data-bs-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span className="visually-hidden">Next</span>
-                    </button>
-                </div>
+   <Carrossel/>
 
 
                 <section className="container_produtos">
@@ -75,13 +56,15 @@ export default function Produtos() {
 
                         {
                             bolos.map((b: Bolo) => (
+                                <CardProduto
+                                    nome={b.nome}
+                                    descricao={b.descricao}
+                                    preco={b.preco}
+                                   imagem={b.imagens[0] ?? ""}
+                                    peso={b.peso}
 
-                                <div className="card_produto">
-                                    <img src={`http://localhost:3000/${b.imagens[0]}`} alt="Uma fatia de bolo de chocolate com biscoito recheado Oreo" />
-                                    <h2>{b.nome}</h2>
-                                    <p></p>
-                                    <span>{b.preco}</span>
-                                </div>
+
+                                />
                             ))
                         }
 

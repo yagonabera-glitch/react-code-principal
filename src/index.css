@@ -4,11 +4,13 @@
   border: 0;
   box-sizing: border-box;
   font-family: "Bellota", system-ui;
+  font-family: "Italiana", sans-serif;
+
 }
 
 :root {
   --corBackground: #FFF6E8;
-  --corPrincipal: #FFD188;
+  --corPrincipal: #7B3314;
   --corFontClara: #FFFFFF;
   --corFontEscura: #000000;
   --alturaRodape: 60px;
